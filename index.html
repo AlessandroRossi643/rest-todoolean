@@ -21,7 +21,7 @@
     <div class="container d-flex flex-column justify-content-center">
       <div class="row">
         <div class="col-lg-8">
-          <h2>LISTA DI COSE DA FARE</h2>
+          <h2>LISTA DI COSE DA FARE:</h2>
           <ul id="lista">
 
           </ul>
@@ -36,6 +36,6 @@
     <script src="script.js" charset="utf-8"></script>
   </body>
   <script id="template-lista" type="text/x-handlebars-template">
-    <li>{{impegno}}</li>
+    <li class="todo">{{impegno}}<i class="fas fa-times" data-id="{{id}}"></i></li>
   </script>
 </html>

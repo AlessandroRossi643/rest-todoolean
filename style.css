@@ -1,4 +1,16 @@
+.container{
+  padding: 10px;
+}
 #nuovoimpegno{
   width: 90%;
   padding: 5px;
+}
+.todo{
+  width: 80%;
+  list-style-type: square;
+  cursor: pointer;
+}
+.fas.fa-times{
+  display: none;
+  float: right;
 }
