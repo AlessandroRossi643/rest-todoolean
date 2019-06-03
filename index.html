@@ -27,8 +27,14 @@
           </ul>
         </div>
         <div class="col-lg-4">
-          <h4>Inserisci un nuovo impegno:</h4>
-          <input type="text" id="nuovoimpegno" placeholder="Inserisci un nuovo impegno">
+          <div class="delete">
+            <h4>Inserisci un nuovo impegno:</h4>
+            <input type="text" id="nuovoimpegno" placeholder="Inserisci un nuovo impegno">
+          </div>
+          <div class="update">
+            <h4>Modifica un impegno:</h4>
+            <input type="text" id="modificaimpegno" placeholder="Modifica impegno">
+          </div>      
         </div>
       </div>
 
@@ -36,6 +42,6 @@
     <script src="script.js" charset="utf-8"></script>
   </body>
   <script id="template-lista" type="text/x-handlebars-template">
-    <li class="todo">{{impegno}}<i class="fas fa-times" data-id="{{id}}"></i></li>
+    <li class="todo">{{impegno}}<i class="fas fa-times" data-id="{{id}}"></i> <i class="fas fa-pencil-alt" data-id="{{id}}"></i></li>
   </script>
 </html>

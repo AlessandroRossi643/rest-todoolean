@@ -19,11 +19,44 @@ $(document).ready(function(){
     }
   },".todo");
 
-  $(document).on("click",".todo i",function(){
+  $(document).on("click",".todo .fa-times",function(){
     var iddaEliminare=$(this).attr("data-id");
     console.log(iddaEliminare);
     eliminaImpegno(urlBase,iddaEliminare);
   });
+
+  $(document).on("click",".todo .fa-pencil-alt",function(){
+    var iddaModificare=$(this).attr("data-id");
+    $(this).closest(".todo").text("....").css({'color':'grey'});
+    $('.update').show("slide",1000);
+    $('.update #modificaimpegno').focus();
+
+    $('#modificaimpegno').keydown(function(event){
+      if(event.which==13){
+        var impegnoModificato=$('#modificaimpegno').val();
+        console.log(impegnoModificato);
+        modificaImpegno(urlBase,impegnoModificato,iddaModificare);
+      }
+    });
+  });
+
+
+// Function da Modificare
+  function modificaImpegno(url,testo,id){
+    $.ajax({
+      url: url+"/"+id,
+      method: "PATCH",
+      data:{
+        'text': testo
+      },
+      success: function(){
+        stampaLista();
+      },
+      error:function(){
+        alert("Ops, qualcosa è andato storto");
+      }
+    });
+  }
 
 
 // Function Elimina impegno
@@ -61,6 +94,7 @@ $(document).ready(function(){
 
 // Function Stampa Lista
   function stampaLista(){
+    $('#modificaimpegno').val('');
     $('#nuovoimpegno').val('');
     $('#lista').html('');
     $.ajax({
